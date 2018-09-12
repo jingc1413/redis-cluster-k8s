@@ -1,0 +1,92 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: pv0
+  labels:
+    type: glusterfs
+    role: redis-cluster
+spec:
+  #storageClassName: gfs-volume
+  capacity:
+    storage: 300Mi
+  accessModes:
+    - ReadWriteOnce
+  glusterfs:
+    endpoints: "glusterfs-cluster"
+    path: "/gfs-volume/redis0"
+    readOnly: false
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: pv1
+  labels:
+    type: glusterfs
+    role: redis-cluster
+spec:
+  #storageClassName: gfs-volume
+  capacity:
+    storage: 300Mi
+  accessModes:
+    - ReadWriteOnce
+  glusterfs:
+    endpoints: "glusterfs-cluster"
+    path: "/gfs-volume/redis1"
+    readOnly: false
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: pv2
+  labels:
+    type: glusterfs
+    role: redis-cluster
+spec:
+  #storageClassName: gfs-volume
+  capacity:
+    storage: 300Mi
+  accessModes:
+    - ReadWriteOnce
+  glusterfs:
+    endpoints: "glusterfs-cluster"
+    path: "/gfs-volume/redis2"
+    readOnly: false
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: datadir-redis-cluster-0
+  labels:
+    role: redis-cluster
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 300Mi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: datadir-redis-cluster-1
+  labels:
+    role: redis-cluster
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 300Mi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: datadir-redis-cluster-2
+  labels:
+    role: redis-cluster
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 300Mi
