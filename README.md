@@ -110,7 +110,7 @@ kubectl delete statefulset,svc,configmap,pvc -l app=redis-cluster
 
 # FIX
 单节点 down掉再启动 可以自动恢复 redis cluster 
-如果是持久化nodes.conf dump.rdb, 关闭所有redis节点再重启, 这时集群恢复失败, nodes.conf ip信息为旧的信息, 由k8s pod ip变化引起, 且redis 配置不支持域名, 解决方法需人工介入, 修改某一持久化 nodes.conf, 更改相关IP 信息, 即可恢复集群
+如果是持久化nodes.conf dump.rdb, 关闭所有redis节点再重启, 这时集群恢复失败, nodes.conf ip信息为旧的信息, 由k8s pod ip变化引起, 且redis 配置不支持域名, 解决方法需人工介入, 修改某一持久化 nodes.conf, 更改相关IP 信息, 即可恢复集群  
 eg:  
 kubectl delete -f redis-cluster.yaml  
 kubectl create -f redis-cluster.yaml  
